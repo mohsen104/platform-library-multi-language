@@ -24,3 +24,5 @@ sequelize.authenticate()
     .catch((error) => {
         console.log(error);
     })
+
+export default sequelize;
