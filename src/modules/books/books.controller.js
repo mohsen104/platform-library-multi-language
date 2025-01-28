@@ -15,6 +15,16 @@ const BooksController = {
         } catch (error) {
             next(error);
         }
+    },
+    getOne: async (req, res, next) => {
+        try {
+            const id = req.params.id;
+            const book = await BooksService.getOne(id);
+            if (!book) res.status(StatusCodes.NOT_FOUND).json({ message: "No book found with the provided ID." });
+            res.status(StatusCodes.OK).json({ data: book });
+        } catch (error) {
+            next(error);
+        }
     }
 }
 
