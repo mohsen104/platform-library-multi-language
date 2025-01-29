@@ -6,6 +6,9 @@ const BooksService = {
     },
     getOne: async (id) => {
         return await Books.findOne({ where: { id } });
+    },
+    remove: async (id) => {
+        return await Books.destroy({ where: { id } });
     }
 }
 

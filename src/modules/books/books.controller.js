@@ -25,6 +25,16 @@ const BooksController = {
         } catch (error) {
             next(error);
         }
+    },
+    remove: async (req, res, next) => {
+        try {
+            const id = req.params.id;
+            const book = await BooksService.remove(id);
+            if (!book) res.status(StatusCodes.NOT_FOUND).json({ message: "No book found with the provided ID." });
+            res.status(StatusCodes.OK).json({ message: "removed book successfully." });
+        } catch (error) {
+            next(error);
+        }
     }
 }
 
