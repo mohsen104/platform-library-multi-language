@@ -14,6 +14,6 @@ const Books = sequelize.define("books", {
     last_borrowed_date: { type: DataTypes.DATE, defaultValue: null },
     times_borrowed: { type: DataTypes.INTEGER, defaultValue: 0 },
     status: { type: DataTypes.STRING(50), allowNull: false, defaultValue: 'available' },
-}, { createdAt: "added_at", updatedAt: "updated_at" })
+}, { timestamps: true, createdAt: "added_at", updatedAt: "updated_at" })
 
 export default Books;
