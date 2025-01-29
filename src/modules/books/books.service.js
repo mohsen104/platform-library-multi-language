@@ -8,7 +8,7 @@ const BooksService = {
                 where: {
                     [Op.or]: {
                         title: { [Op.like]: `%${dto.q}%` },
-                        publisher: { [Op.like]: `%${dto.q}%` },
+                        author: { [Op.like]: `%${dto.q}%` },
                     }
                 },
                 order: [[dto.order_by, dto.sort_order]],

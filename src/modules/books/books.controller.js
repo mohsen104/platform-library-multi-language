@@ -33,7 +33,7 @@ const BooksController = {
     },
     getOne: async (req, res, next) => {
         try {
-            const id = req.params.id;
+            const id = +req.params.id;
             validator(zParams, { id });
             const book = await BooksService.getOne(id);
             if (!book) res.status(StatusCodes.NOT_FOUND).json({ message: "No book found with the provided ID." });
@@ -44,7 +44,7 @@ const BooksController = {
     },
     edit: async (req, res, next) => {
         try {
-            const id = req.params.id;
+            const id = +req.params.id;
             validator(zParams, { id });
             const body = req.body;
             const dto = removeEmptyProperty(body);
@@ -58,7 +58,7 @@ const BooksController = {
     },
     remove: async (req, res, next) => {
         try {
-            const id = req.params.id;
+            const id = +req.params.id;
             validator(zParams, { id });
             const deletedCount = await BooksService.remove(id);
             if (!deletedCount) res.status(StatusCodes.NOT_FOUND).json({ message: "No book found with the provided ID." });
