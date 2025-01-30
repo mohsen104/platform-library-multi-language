@@ -29,6 +29,13 @@ const LocalizedUsersMessages = Object.freeze({
         tr: "Kullanıcı başarıyla silindi.",
         fr: "Utilisateur supprimé avec succès.",
     },
+    existing: {
+        en: "User already exists.",
+        fa: "کاربر از قبل وجود دارد.",
+        ar: "المستخدم موجود بالفعل.",
+        tr: "Kullanıcı zaten mevcut.",
+        fr: "L'utilisateur existe déjà.",
+    },
 });
 
 const UsersMessages = Object.fromEntries(

@@ -29,6 +29,20 @@ const LocalizedBorrowedMessages = Object.freeze({
         tr: "Kitap başarıyla iade edildi.",
         fr: "Le livre a été retourné avec succès.",
     },
+    already_borrowed: {
+        en: "This book has already been borrowed.",
+        fa: "این کتاب قبلاً قرض گرفته شده است.",
+        ar: "تم استعارة هذا الكتاب بالفعل.",
+        tr: "Bu kitap zaten ödünç alınmış.",
+        fr: "Ce livre a déjà été emprunté.",
+    },
+    already_returned: {
+        en: "This book has already been returned.",
+        fa: "این کتاب قبلاً بازگردانده شده است.",
+        ar: "تم إعادة هذا الكتاب بالفعل.",
+        tr: "Bu kitap zaten iade edilmiş.",
+        fr: "Ce livre a déjà été retourné.",
+    },
 });
 
 const BorrowedMessages = Object.fromEntries(

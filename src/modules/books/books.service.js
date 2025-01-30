@@ -1,5 +1,8 @@
 import { Op } from "@sequelize/core";
 import Books from "./books.model.js";
+import { StatusCodes } from "http-status-codes";
+import createHttpError from "http-errors";
+import BooksMessages from "./books.message.js";
 
 const BooksService = {
     getAll: async (dto) => {
@@ -27,6 +30,10 @@ const BooksService = {
         return book.dataValues;
     },
     edit: async (dto, id) => {
+        const isExistsBook = await Users.findByPk(id);
+        if (!isExistsBook) {
+            throw createHttpError(StatusCodes.NOT_FOUND, BooksMessages.not_found);
+        }
         return await Books.update(dto, { where: { id } });
     },
     remove: async (id) => {

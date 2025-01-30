@@ -1,10 +1,24 @@
+import { StatusCodes } from "http-status-codes";
+import BorrowedMessages from "./borrowed.message.js";
 import Borrowed from "./borrowed.model.js";
+import createHttpError from "http-errors";
 
 const BorrowedService = {
     record: async (user_id, book_id) => {
+        const isExistsRecord = await Borrowed.findOne({ where: { user_id, book_id } });
+        if (isExistsRecord) {
+            throw createHttpError(StatusCodes.CONFLICT, BorrowedMessages.already_borrowed);
+        }
         await Borrowed.create({ user_id, book_id });
     },
     return: async (user_id, book_id, fine_amount) => {
+        const isExistsRecord = await Borrowed.findOne({ where: { user_id, book_id } });
+        if (isExistsRecord) {
+            throw createHttpError(StatusCodes.CONFLICT, BorrowedMessages.already_borrowed);
+        }
+        if (isExistsRecord.status === "returned") {
+            throw createHttpError(StatusCodes.CONFLICT, BorrowedMessages.already_returned);
+        }
         await Borrowed.update(
             { fine_amount, returned_date: Date.now(), status: "returned" },
             { where: { user_id, book_id } },
