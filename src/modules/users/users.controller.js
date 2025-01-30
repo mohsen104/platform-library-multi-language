@@ -6,6 +6,7 @@ import UsersService from './users.service.js';
 import { zParams } from '../../common/validations/params.js';
 import { zQuery } from '../../common/validations/query.js';
 import UsersMessages from './users.message.js';
+import formatDate from '../../common/utils/formatDate.js';
 
 const UsersController = {
     getAll: async (req, res, next) => {
@@ -16,7 +17,14 @@ const UsersController = {
             const dto = { q, order_by, sort_order, limit, page };
             validator(zQuery, dto);
             const { rows, count } = await UsersService.getAll(dto);
-            res.status(StatusCodes.OK).json({ count, page, limit, data: rows });
+            const formattedUsers = rows.map(user => {
+                return {
+                    ...user,
+                    added_at: formatDate(user.added_at),
+                    updated_at: formatDate(user.updated_at),
+                };
+            })
+            return res.status(StatusCodes.OK).json({ count, page, limit, data: formattedUsers });
         } catch (error) {
             next(error);
         }
@@ -27,7 +35,7 @@ const UsersController = {
             const dto = removeEmptyProperty(body);
             validator(zUsers, dto);
             await UsersService.create(dto);
-            res.status(StatusCodes.CREATED).json({ message: UsersMessages.created });
+            return res.status(StatusCodes.CREATED).json({ message: UsersMessages.created });
         } catch (error) {
             next(error);
         }
@@ -37,8 +45,13 @@ const UsersController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const user = await UsersService.getOne(id);
-            if (!user) res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.created });
-            res.status(StatusCodes.OK).json({ data: user });
+            if (!user) return res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.not_found });
+            const formattedUser = {
+                ...user,
+                added_at: formatDate(user.added_at),
+                updated_at: formatDate(user.updated_at),
+            };
+            return res.status(StatusCodes.OK).json({ data: formattedUser });
         } catch (error) {
             next(error);
         }
@@ -51,8 +64,8 @@ const UsersController = {
             const dto = removeEmptyProperty(body);
             validator(zUsers.partial(), dto);
             const updatedCount = await UsersService.edit(dto, id);
-            if (!updatedCount) res.status(StatusCodes.NOT_FOUND).json({ message: "No user found with the provided ID." });
-            res.status(StatusCodes.OK).json({ data: "edited user successfully." });
+            if (!updatedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.not_found });
+            return res.status(StatusCodes.OK).json({ data: UsersMessages.edited });
         } catch (error) {
             next(error);
         }
@@ -62,8 +75,8 @@ const UsersController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const deletedCount = await UsersService.remove(id);
-            if (!deletedCount) res.status(StatusCodes.NOT_FOUND).json({ message: "No user found with the provided ID." });
-            res.status(StatusCodes.OK).json({ message: "removed user successfully." });
+            if (!deletedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.not_found });
+            return res.status(StatusCodes.OK).json({ message: UsersMessages.removed });
         } catch (error) {
             next(error);
         }

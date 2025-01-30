@@ -7,8 +7,9 @@ const UsersService = {
             {
                 where: {
                     [Op.or]: {
-                        title: { [Op.like]: `%${dto.q}%` },
-                        author: { [Op.like]: `%${dto.q}%` },
+                        first_name: { [Op.like]: `%${dto.q}%` },
+                        last_name: { [Op.like]: `%${dto.q}%` },
+                        national_code: { [Op.like]: `%${dto.q}%` },
                     }
                 },
                 order: [[dto.order_by, dto.sort_order]],
@@ -23,7 +24,8 @@ const UsersService = {
         await Users.create(dto);
     },
     getOne: async (id) => {
-        return await Users.findOne({ where: { id } });
+        const users = await Users.findOne({ where: { id } });
+        return users.dataValues;
     },
     edit: async (dto, id) => {
         return await Users.update(dto, { where: { id } });

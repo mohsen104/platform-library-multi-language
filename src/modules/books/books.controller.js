@@ -6,6 +6,8 @@ import BooksService from './books.service.js';
 import { zParams } from '../../common/validations/params.js';
 import { zQuery } from '../../common/validations/query.js';
 import BooksMessage from './books.message.js';
+import formatDate from '../../common/utils/formatDate.js';
+import formatCurrency from '../../common/utils/formatCurrency.js';
 
 const BooksController = {
     getAll: async (req, res, next) => {
@@ -16,7 +18,17 @@ const BooksController = {
             const dto = { q, order_by, sort_order, limit, page };
             validator(zQuery, dto);
             const { rows, count } = await BooksService.getAll(dto);
-            res.status(StatusCodes.OK).json({ count, page, limit, data: rows });
+            const formattedBooks = rows.map((book) => {
+                return {
+                    ...book,
+                    added_at: formatDate(book.added_at),
+                    updated_at: formatDate(book.updated_at),
+                    published_year: formatDate(book.published_year),
+                    last_borrowed_date: formatDate(book.last_borrowed_date),
+                    late_fee_per_day: formatCurrency(book.late_fee_per_day)
+                }
+            })
+            return res.status(StatusCodes.OK).json({ count, page, limit, data: formattedBooks });
         } catch (error) {
             next(error);
         }
@@ -27,7 +39,7 @@ const BooksController = {
             const dto = removeEmptyProperty(body);
             validator(zBooks, dto);
             await BooksService.create(dto);
-            res.status(StatusCodes.CREATED).json({ message: BooksMessage.created });
+            return res.status(StatusCodes.CREATED).json({ message: BooksMessage.created });
         } catch (error) {
             next(error);
         }
@@ -37,8 +49,16 @@ const BooksController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const book = await BooksService.getOne(id);
-            if (!book) res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
-            res.status(StatusCodes.OK).json({ data: book });
+            if (!book) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
+            const formattedBook = {
+                ...book,
+                added_at: formatDate(book.added_at),
+                updated_at: formatDate(book.updated_at),
+                published_year: formatDate(book.published_year),
+                last_borrowed_date: formatDate(book.last_borrowed_date),
+                late_fee_per_day: formatCurrency(book.late_fee_per_day)
+            };
+            return res.status(StatusCodes.OK).json({ data: formattedBook });
         } catch (error) {
             next(error);
         }
@@ -51,8 +71,8 @@ const BooksController = {
             const dto = removeEmptyProperty(body);
             validator(zBooks.partial(), dto);
             const updatedCount = await BooksService.edit(dto, id);
-            if (!updatedCount) res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
-            res.status(StatusCodes.OK).json({ data: BooksMessage.edited });
+            if (!updatedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
+            return res.status(StatusCodes.OK).json({ data: BooksMessage.edited });
         } catch (error) {
             next(error);
         }
@@ -62,8 +82,8 @@ const BooksController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const deletedCount = await BooksService.remove(id);
-            if (!deletedCount) res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
-            res.status(StatusCodes.OK).json({ message: BooksMessage.removed });
+            if (!deletedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
+            return res.status(StatusCodes.OK).json({ message: BooksMessage.removed });
         } catch (error) {
             next(error);
         }

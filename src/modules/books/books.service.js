@@ -23,7 +23,8 @@ const BooksService = {
         await Books.create(dto);
     },
     getOne: async (id) => {
-        return await Books.findOne({ where: { id } });
+        const book = await Books.findOne({ where: { id } });
+        return book.dataValues;
     },
     edit: async (dto, id) => {
         return await Books.update(dto, { where: { id } });
