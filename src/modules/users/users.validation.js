@@ -25,21 +25,9 @@ const zUsers = z.object({
         .min(10, "Phone number must be at least 10 characters")
         .max(15, "Phone number must be at most 15 characters"),
 
-    borrow_limit: z.number()
-        .int("Borrow limit must be an integer")
-        .default(0),
-
     address: z.string()
         .min(1, "Address is required")
         .max(255, "Address must be at most 255 characters"),
-
-    is_blocked: z.boolean()
-        .default(false),
-
-    blocked_reason: z.string()
-        .max(255, "Blocked reason must be at most 255 characters")
-        .nullable()
-        .optional(),
 });
 
 export default zUsers;

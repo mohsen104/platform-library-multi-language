@@ -1,13 +1,13 @@
 import { StatusCodes } from 'http-status-codes';
-import removeEmptyProperty from '../../common/utils/removeEmptyProperty.js';
 import validator from '../../common/validations/validator.js';
 import zBooks from './books.validation.js';
 import BooksService from './books.service.js';
 import { zParams } from '../../common/validations/params.js';
 import { zQuery } from '../../common/validations/query.js';
-import BooksMessage from './books.message.js';
+import BooksMessages from './books.message.js';
 import formatDate from '../../common/utils/formatDate.js';
 import formatCurrency from '../../common/utils/formatCurrency.js';
+import cleanedData from '../../common/utils/cleanedData.js';
 
 const BooksController = {
     getAll: async (req, res, next) => {
@@ -18,6 +18,9 @@ const BooksController = {
             const dto = { q, order_by, sort_order, limit, page };
             validator(zQuery, dto);
             const { rows, count } = await BooksService.getAll(dto);
+            if (!rows.length) {
+                return res.status(StatusCodes.OK).json({ message: BooksMessages.no_books_found });
+            }
             const formattedBooks = rows.map((book) => {
                 return {
                     ...book,
@@ -36,10 +39,9 @@ const BooksController = {
     create: async (req, res, next) => {
         try {
             const body = req.body;
-            const dto = removeEmptyProperty(body);
-            validator(zBooks, dto);
+            const dto = validator(zBooks, cleanedData(body));
             await BooksService.create(dto);
-            return res.status(StatusCodes.CREATED).json({ message: BooksMessage.created });
+            return res.status(StatusCodes.CREATED).json({ message: BooksMessages.created });
         } catch (error) {
             next(error);
         }
@@ -49,7 +51,7 @@ const BooksController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const book = await BooksService.getOne(id);
-            if (!book) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
+            if (!book) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessages.not_found });
             const formattedBook = {
                 ...book,
                 added_at: formatDate(book.added_at),
@@ -68,11 +70,9 @@ const BooksController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const body = req.body;
-            const dto = removeEmptyProperty(body);
-            validator(zBooks.partial(), dto);
-            const updatedCount = await BooksService.edit(dto, id);
-            if (!updatedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
-            return res.status(StatusCodes.OK).json({ data: BooksMessage.edited });
+            const dto = validator(zBooks.partial(), cleanedData(body));
+            await BooksService.edit(dto, id);
+            return res.status(StatusCodes.OK).json({ data: BooksMessages.edited });
         } catch (error) {
             next(error);
         }
@@ -81,9 +81,8 @@ const BooksController = {
         try {
             const id = +req.params.id;
             validator(zParams, { id });
-            const deletedCount = await BooksService.remove(id);
-            if (!deletedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: BooksMessage.not_found });
-            return res.status(StatusCodes.OK).json({ message: BooksMessage.removed });
+            await BooksService.remove(id);
+            return res.status(StatusCodes.OK).json({ message: BooksMessages.removed });
         } catch (error) {
             next(error);
         }

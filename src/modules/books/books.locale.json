@@ -1,0 +1,128 @@
+{
+  "title_required": {
+    "en": "Title is required.",
+    "fa": "عنوان الزامی است.",
+    "ar": "العنوان مطلوب.",
+    "tr": "Başlık gereklidir.",
+    "fr": "Le titre est requis."
+  },
+  "title_max": {
+    "en": "Title must be at most 255 characters.",
+    "fa": "عنوان باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون العنوان 255 حرفًا كحد أقصى.",
+    "tr": "Başlık en fazla 255 karakter olmalıdır.",
+    "fr": "Le titre doit contenir au maximum 255 caractères."
+  },
+  "author_required": {
+    "en": "Author is required.",
+    "fa": "نویسنده الزامی است.",
+    "ar": "المؤلف مطلوب.",
+    "tr": "Yazar gereklidir.",
+    "fr": "L'auteur est requis."
+  },
+  "author_max": {
+    "en": "Author must be at most 255 characters.",
+    "fa": "نویسنده باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون اسم المؤلف 255 حرفًا كحد أقصى.",
+    "tr": "Yazar en fazla 255 karakter olmalıdır.",
+    "fr": "L'auteur doit contenir au maximum 255 caractères."
+  },
+  "publisher_required": {
+    "en": "Publisher is required.",
+    "fa": "ناشر الزامی است.",
+    "ar": "الناشر مطلوب.",
+    "tr": "Yayınevi gereklidir.",
+    "fr": "L'éditeur est requis."
+  },
+  "publisher_max": {
+    "en": "Publisher must be at most 255 characters.",
+    "fa": "ناشر باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون الناشر 255 حرفًا كحد أقصى.",
+    "tr": "Yayınevi en fazla 255 karakter olmalıdır.",
+    "fr": "L'éditeur doit contenir au maximum 255 caractères."
+  },
+  "edition_max": {
+    "en": "Edition must be at most 50 characters.",
+    "fa": "ویرایش باید حداکثر 50 کاراکتر باشد.",
+    "ar": "يجب أن يكون الإصدار 50 حرفًا كحد أقصى.",
+    "tr": "Baskı en fazla 50 karakter olmalıdır.",
+    "fr": "L'édition doit contenir au maximum 50 caractères."
+  },
+  "language_required": {
+    "en": "Language is required.",
+    "fa": "زبان الزامی است.",
+    "ar": "اللغة مطلوبة.",
+    "tr": "Dil gereklidir.",
+    "fr": "La langue est requise."
+  },
+  "language_max": {
+    "en": "Language must be at most 50 characters.",
+    "fa": "زبان باید حداکثر 50 کاراکتر باشد.",
+    "ar": "يجب أن تكون اللغة 50 حرفًا كحد أقصى.",
+    "tr": "Dil en fazla 50 karakter olmalıdır.",
+    "fr": "La langue doit contenir au maximum 50 caractères."
+  },
+  "genre_max": {
+    "en": "Genre must be at most 100 characters.",
+    "fa": "ژانر باید حداکثر 100 کاراکتر باشد.",
+    "ar": "يجب أن يكون النوع 100 حرفًا كحد أقصى.",
+    "tr": "Tür en fazla 100 karakter olmalıdır.",
+    "fr": "Le genre doit contenir au maximum 100 caractères."
+  },
+  "published_year_int": {
+    "en": "Published year must be an integer.",
+    "fa": "سال انتشار باید یک عدد صحیح باشد.",
+    "ar": "يجب أن يكون سنة النشر عددًا صحيحًا.",
+    "tr": "Yayın yılı bir tam sayı olmalıdır.",
+    "fr": "L'année de publication doit être un entier."
+  },
+  "published_year_min": {
+    "en": "Published year must be positive.",
+    "fa": "سال انتشار باید مثبت باشد.",
+    "ar": "يجب أن تكون سنة النشر موجبة.",
+    "tr": "Yayın yılı pozitif olmalıdır.",
+    "fr": "L'année de publication doit être positive."
+  },
+  "late_fee_max": {
+    "en": "Late fee must be at most 50 characters.",
+    "fa": "جریمه دیرکرد باید حداکثر 50 کاراکتر باشد.",
+    "ar": "يجب أن تكون غرامة التأخير 50 حرفًا كحد أقصى.",
+    "tr": "Gecikme ücreti en fazla 50 karakter olmalıdır.",
+    "fr": "Les frais de retard doivent contenir au maximum 50 caractères."
+  },
+  "created": {
+    "en": "Book created successfully.",
+    "fa": "کتاب با موفقیت ایجاد شد.",
+    "ar": "تم إنشاء الكتاب بنجاح.",
+    "tr": "Kitap başarıyla oluşturuldu.",
+    "fr": "Livre créé avec succès."
+  },
+  "not_found": {
+    "en": "No book found with the provided ID.",
+    "fa": "کتابی با شناسه ارائه شده یافت نشد.",
+    "ar": "لم يتم العثور على كتاب بالمعرف المقدم.",
+    "tr": "Sağlanan kimliğe sahip kitap bulunamadı.",
+    "fr": "Aucun livre trouvé avec l'ID fourni."
+  },
+  "edited": {
+    "en": "Book edited successfully.",
+    "fa": "کتاب با موفقیت ویرایش شد.",
+    "ar": "تم تعديل الكتاب بنجاح.",
+    "tr": "Kitap başarıyla düzenlendi.",
+    "fr": "Livre modifié avec succès."
+  },
+  "removed": {
+    "en": "Book removed successfully.",
+    "fa": "کتاب با موفقیت حذف شد.",
+    "ar": "تمت إزالة الكتاب بنجاح.",
+    "tr": "Kitap başarıyla silindi.",
+    "fr": "Livre supprimé avec succès."
+  },
+  "no_books_found": {
+    "en": "No books found.",
+    "fa": "هیچ کتابی یافت نشد.",
+    "ar": "لم يتم العثور على أي كتاب.",
+    "tr": "Hiçbir kitap bulunamadı.",
+    "fr": "Aucun livre trouvé."
+  }
+}

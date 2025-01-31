@@ -30,14 +30,16 @@ const BooksService = {
         return book.dataValues;
     },
     edit: async (dto, id) => {
-        const isExistsBook = await Users.findByPk(id);
-        if (!isExistsBook) {
+        const updatedCount = await Books.update(dto, { where: { id } });
+        if (!updatedCount) {
             throw createHttpError(StatusCodes.NOT_FOUND, BooksMessages.not_found);
         }
-        return await Books.update(dto, { where: { id } });
     },
     remove: async (id) => {
-        return await Books.destroy({ where: { id } });
+        const deletedCount = await Books.destroy({ where: { id } });
+        if (!deletedCount) {
+            throw createHttpError(StatusCodes.NOT_FOUND, BooksMessages.not_found);
+        }
     }
 }
 

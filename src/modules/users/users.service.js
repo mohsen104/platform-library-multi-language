@@ -31,18 +31,20 @@ const UsersService = {
         await Users.create(dto);
     },
     getOne: async (id) => {
-        const users = await Users.findOne({ where: { id } });
-        return users.dataValues;
+        const user = await Users.findOne({ where: { id } });
+        return user.dataValues;
     },
     edit: async (dto, id) => {
-        const isExistsUser = await Users.findByPk(id);
-        if (!isExistsUser) {
+        const updatedCount = await Users.update(dto, { where: { id } });
+        if (!updatedCount) {
             throw createHttpError(StatusCodes.NOT_FOUND, UsersMessages.not_found);
         }
-        return await Users.update(dto, { where: { id } });
     },
     remove: async (id) => {
-        return await Users.destroy({ where: { id } });
+        const deletedCount = await Users.destroy({ where: { id } });
+        if (!deletedCount) {
+            throw createHttpError(StatusCodes.NOT_FOUND, UsersMessages.not_found);
+        }
     }
 }
 

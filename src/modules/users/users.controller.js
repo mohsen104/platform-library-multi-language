@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import removeEmptyProperty from '../../common/utils/removeEmptyProperty.js';
+import cleanedData from '../../common/utils/cleanedData.js';
 import validator from '../../common/validations/validator.js';
 import zUsers from './users.validation.js';
 import UsersService from './users.service.js';
@@ -17,6 +17,9 @@ const UsersController = {
             const dto = { q, order_by, sort_order, limit, page };
             validator(zQuery, dto);
             const { rows, count } = await UsersService.getAll(dto);
+            if (!rows.length) {
+                return res.status(StatusCodes.OK).json({ message: UsersMessages.no_users_found });
+            }
             const formattedUsers = rows.map(user => {
                 return {
                     ...user,
@@ -32,8 +35,7 @@ const UsersController = {
     create: async (req, res, next) => {
         try {
             const body = req.body;
-            const dto = removeEmptyProperty(body);
-            validator(zUsers, dto);
+            const dto = validator(zUsers, cleanedData(body));
             await UsersService.create(dto);
             return res.status(StatusCodes.CREATED).json({ message: UsersMessages.created });
         } catch (error) {
@@ -61,10 +63,8 @@ const UsersController = {
             const id = +req.params.id;
             validator(zParams, { id });
             const body = req.body;
-            const dto = removeEmptyProperty(body);
-            validator(zUsers.partial(), dto);
-            const updatedCount = await UsersService.edit(dto, id);
-            if (!updatedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.not_found });
+            const dto = validator(zUsers.partial(), cleanedData(body));
+            await UsersService.edit(dto, id);
             return res.status(StatusCodes.OK).json({ data: UsersMessages.edited });
         } catch (error) {
             next(error);
@@ -74,8 +74,7 @@ const UsersController = {
         try {
             const id = +req.params.id;
             validator(zParams, { id });
-            const deletedCount = await UsersService.remove(id);
-            if (!deletedCount) return res.status(StatusCodes.NOT_FOUND).json({ message: UsersMessages.not_found });
+            await UsersService.remove(id);
             return res.status(StatusCodes.OK).json({ message: UsersMessages.removed });
         } catch (error) {
             next(error);

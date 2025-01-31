@@ -36,6 +36,13 @@ const LocalizedUsersMessages = Object.freeze({
         tr: "Kullanıcı zaten mevcut.",
         fr: "L'utilisateur existe déjà.",
     },
+    no_users_found: {
+        en: "No users found.",
+        fa: "هیچ کاربری یافت نشد.",
+        ar: "لم يتم العثور على أي مستخدم.",
+        tr: "Hiçbir kullanıcı bulunamadı.",
+        fr: "Aucun utilisateur trouvé."
+    }
 });
 
 const UsersMessages = Object.fromEntries(

@@ -9,7 +9,7 @@ const validator = (schema, data) => {
       message: fromError(validationResult.error).message.toString(),
     };
   }
-  return data;
+  return validationResult.data;
 };
 
 export default validator;
