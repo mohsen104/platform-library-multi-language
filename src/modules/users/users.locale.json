@@ -1,0 +1,142 @@
+{
+  "first_name_required": {
+    "en": "First name is required.",
+    "fa": "نام کوچک الزامی است.",
+    "ar": "الاسم الأول مطلوب.",
+    "tr": "Ad gereklidir.",
+    "fr": "Le prénom est requis."
+  },
+  "first_name_max": {
+    "en": "First name must be at most 255 characters.",
+    "fa": "نام کوچک باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون الاسم الأول 255 حرفًا كحد أقصى.",
+    "tr": "Ad en fazla 255 karakter olmalıdır.",
+    "fr": "Le prénom doit contenir au maximum 255 caractères."
+  },
+  "last_name_required": {
+    "en": "Last name is required.",
+    "fa": "نام خانوادگی الزامی است.",
+    "ar": "الاسم الأخير مطلوب.",
+    "tr": "Soyad gereklidir.",
+    "fr": "Le nom de famille est requis."
+  },
+  "last_name_max": {
+    "en": "Last name must be at most 255 characters.",
+    "fa": "نام خانوادگی باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون الاسم الأخير 255 حرفًا كحد أقصى.",
+    "tr": "Soyad en fazla 255 karakter olmalıdır.",
+    "fr": "Le nom de famille doit contenir au maximum 255 caractères."
+  },
+  "age_int": {
+    "en": "Age must be an integer.",
+    "fa": "سن باید یک عدد صحیح باشد.",
+    "ar": "يجب أن يكون العمر عددًا صحيحًا.",
+    "tr": "Yaş bir tam sayı olmalıdır.",
+    "fr": "L'âge doit être un entier."
+  },
+  "age_min": {
+    "en": "Age must be a positive number.",
+    "fa": "سن باید عددی مثبت باشد.",
+    "ar": "يجب أن يكون العمر عددًا موجبًا.",
+    "tr": "Yaş pozitif bir sayı olmalıdır.",
+    "fr": "L'âge doit être un nombre positif."
+  },
+  "age_max": {
+    "en": "Age must be realistic.",
+    "fa": "سن باید منطقی باشد.",
+    "ar": "يجب أن يكون العمر واقعيًا.",
+    "tr": "Yaş gerçekçi olmalıdır.",
+    "fr": "L'âge doit être réaliste."
+  },
+  "city_required": {
+    "en": "City is required.",
+    "fa": "شهر الزامی است.",
+    "ar": "المدينة مطلوبة.",
+    "tr": "Şehir gereklidir.",
+    "fr": "La ville est requise."
+  },
+  "city_max": {
+    "en": "City must be at most 255 characters.",
+    "fa": "شهر باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن تكون المدينة 255 حرفًا كحد أقصى.",
+    "tr": "Şehir en fazla 255 karakter olmalıdır.",
+    "fr": "La ville doit contenir au maximum 255 caractères."
+  },
+  "national_code_length": {
+    "en": "National code must be exactly 10 characters.",
+    "fa": "کد ملی باید دقیقاً 10 کاراکتر باشد.",
+    "ar": "يجب أن يكون الكود الوطني مكونًا من 10 أحرف بالضبط.",
+    "tr": "Ulusal kod tam olarak 10 karakter olmalıdır.",
+    "fr": "Le code national doit comporter exactement 10 caractères."
+  },
+  "phone_number_min": {
+    "en": "Phone number must be at least 10 characters.",
+    "fa": "شماره تلفن باید حداقل 10 کاراکتر باشد.",
+    "ar": "يجب أن يكون رقم الهاتف مكونًا من 10 أحرف على الأقل.",
+    "tr": "Telefon numarası en az 10 karakter olmalıdır.",
+    "fr": "Le numéro de téléphone doit comporter au moins 10 caractères."
+  },
+  "phone_number_max": {
+    "en": "Phone number must be at most 15 characters.",
+    "fa": "شماره تلفن باید حداکثر 15 کاراکتر باشد.",
+    "ar": "يجب أن يكون رقم الهاتف مكونًا من 15 حرفًا كحد أقصى.",
+    "tr": "Telefon numarası en fazla 15 karakter olmalıdır.",
+    "fr": "Le numéro de téléphone doit contenir au maximum 15 caractères."
+  },
+  "address_required": {
+    "en": "Address is required.",
+    "fa": "آدرس الزامی است.",
+    "ar": "العنوان مطلوب.",
+    "tr": "Adres gereklidir.",
+    "fr": "L'adresse est requise."
+  },
+  "address_max": {
+    "en": "Address must be at most 255 characters.",
+    "fa": "آدرس باید حداکثر 255 کاراکتر باشد.",
+    "ar": "يجب أن يكون العنوان 255 حرفًا كحد أقصى.",
+    "tr": "Adres en fazla 255 karakter olmalıdır.",
+    "fr": "L'adresse doit contenir au maximum 255 caractères."
+  },
+  "created": {
+    "en": "User created successfully.",
+    "fa": "کاربر با موفقیت ایجاد شد.",
+    "ar": "تم إنشاء المستخدم بنجاح.",
+    "tr": "Kullanıcı başarıyla oluşturuldu.",
+    "fr": "Utilisateur créé avec succès."
+  },
+  "not_found": {
+    "en": "No user found with the provided ID.",
+    "fa": "کاربری با شناسه ارائه شده یافت نشد.",
+    "ar": "لم يتم العثور على مستخدم بالمعرف المقدم.",
+    "tr": "Sağlanan kimliğe sahip kullanıcı bulunamadı.",
+    "fr": "Aucun utilisateur trouvé avec l'ID fourni."
+  },
+  "edited": {
+    "en": "User edited successfully.",
+    "fa": "کاربر با موفقیت ویرایش شد.",
+    "ar": "تم تعديل المستخدم بنجاح.",
+    "tr": "Kullanıcı başarıyla düzenlendi.",
+    "fr": "Utilisateur modifié avec succès."
+  },
+  "removed": {
+    "en": "User removed successfully.",
+    "fa": "کاربر با موفقیت حذف شد.",
+    "ar": "تمت إزالة المستخدم بنجاح.",
+    "tr": "Kullanıcı başarıyla silindi.",
+    "fr": "Utilisateur supprimé avec succès."
+  },
+  "existing": {
+    "en": "User already exists.",
+    "fa": "کاربر از قبل وجود دارد.",
+    "ar": "المستخدم موجود بالفعل.",
+    "tr": "Kullanıcı zaten mevcut.",
+    "fr": "L'utilisateur existe déjà."
+  },
+  "no_users_found": {
+    "en": "No users found.",
+    "fa": "هیچ کاربری یافت نشد.",
+    "ar": "لم يتم العثور على أي مستخدم.",
+    "tr": "Hiçbir kullanıcı bulunamadı.",
+    "fr": "Aucun utilisateur trouvé."
+  }
+}

@@ -44,7 +44,7 @@ const Books = sequelize.define("books", {
         defaultValue: 0
     },
     status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.TINYINT,
         defaultValue: 0
     },
 }, { timestamps: true, createdAt: "added_at", updatedAt: "updated_at" })

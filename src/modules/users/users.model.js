@@ -27,14 +27,14 @@ const Users = sequelize.define("users", {
         type: DataTypes.STRING(15),
         allowNull: false
     },
+    address: {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
     borrow_limit: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 5
-    },
-    address: {
-        type: DataTypes.STRING(255),
-        allowNull: false
     },
     is_blocked: {
         type: DataTypes.BOOLEAN,

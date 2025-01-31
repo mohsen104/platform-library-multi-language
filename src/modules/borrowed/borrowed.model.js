@@ -13,14 +13,13 @@ const Borrowed = sequelize.define("borrowed", {
         allowNull: false,
         defaultValue: DataTypes.NOW
     },
-    fine_amount: {
+    borrow_fee: {
         type: DataTypes.STRING,
         allowNull: true,
     },
     status: {
-        type: DataTypes.ENUM("borrowed", "returned"),
-        allowNull: true,
-        defaultValue: 'borrowed'
+        type: DataTypes.TINYINT,
+        defaultValue: 0
     }
 }, { timestamps: false });
 
