@@ -1,4 +1,4 @@
-import LocalizedUsersMessages from './users.locale.json' assert { type: "json" };
+import LocalizedUsersMessages from './users.locale.json' with { type: "json" };
 
 const language = process.env.LANGUAGE || 'en';
 

@@ -138,5 +138,12 @@
     "ar": "لم يتم العثور على أي مستخدم.",
     "tr": "Hiçbir kullanıcı bulunamadı.",
     "fr": "Aucun utilisateur trouvé."
+  },
+  "user_blocked": {
+    "en": "User has been blocked.",
+    "fa": "کاربر مسدود شده است.",
+    "ar": "تم حظر المستخدم.",
+    "tr": "Kullanıcı engellendi.",
+    "fr": "L'utilisateur a été bloqué."
   }
 }

@@ -90,6 +90,20 @@
     "tr": "Gecikme ücreti en fazla 50 karakter olmalıdır.",
     "fr": "Les frais de retard doivent contenir au maximum 50 caractères."
   },
+  "quantity_available_int": {
+    "en": "Quantity available must be an integer.",
+    "fa": "تعداد موجود باید یک عدد صحیح باشد.",
+    "ar": "يجب أن تكون الكمية المتاحة عددًا صحيحًا.",
+    "tr": "Mevcut miktar bir tam sayı olmalıdır.",
+    "fr": "La quantité disponible doit être un entier."
+  },
+  "quantity_available_min": {
+    "en": "Quantity available must be positive.",
+    "fa": "تعداد موجود باید مثبت باشد.",
+    "ar": "يجب أن تكون الكمية المتاحة موجبة.",
+    "tr": "Mevcut miktar pozitif olmalıdır.",
+    "fr": "La quantité disponible doit être positive."
+  },
   "created": {
     "en": "Book created successfully.",
     "fa": "کتاب با موفقیت ایجاد شد.",

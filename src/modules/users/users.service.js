@@ -30,6 +30,9 @@ const UsersService = {
         }
         await Users.create(dto);
     },
+    block: async (reason, id) => {
+        await Users.update({ is_blocked:true, blocked_reason: reason }, { where: { id } });
+    },
     getOne: async (id) => {
         const user = await Users.findOne({ where: { id } });
         return user.dataValues;

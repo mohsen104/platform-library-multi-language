@@ -1,4 +1,4 @@
-import LocalizedBooksMessages from './books.locale.json' assert { type: "json" };
+import LocalizedBooksMessages from './books.locale.json' with { type: "json" };
 
 const language = process.env.LANGUAGE || 'en';
 

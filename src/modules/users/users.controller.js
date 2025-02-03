@@ -42,6 +42,18 @@ const UsersController = {
             next(error);
         }
     },
+    block: async (req, res, next) => {
+        try {
+            const id = +req.params.id;
+            validator(zParams, { id });
+            const body = req.body;
+            const { reason } = cleanedData(body);
+            await UsersService.block(reason, id);
+            return res.status(StatusCodes.OK).json({ message: UsersMessages.user_blocked });
+        } catch (error) {
+            next(error);
+        }
+    },
     getOne: async (req, res, next) => {
         try {
             const id = +req.params.id;

@@ -40,6 +40,10 @@ const zBooks = z.object({
         .max(50, BooksMessages.late_fee_max)
         .nullable()
         .optional(),
+
+    quantity_available: z.number()
+        .int(BooksMessages.quantity_available_int)
+        .min(0, BooksMessages.quantity_available_min),
 });
 
 export default zBooks;
