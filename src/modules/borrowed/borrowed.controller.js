@@ -3,22 +3,6 @@ import BorrowedService from './borrowed.service.js';
 import BorrowedMessages from './borrowed.message.js';
 
 const BorrowedController = {
-    getAll: async (req, res, next) => {
-        try {
-            // const borrowed = await BorrowedService.getAll();
-            return res.status(StatusCodes.OK).json({ data: 'borrowed' });
-        } catch (error) {
-            next(error);
-        }
-    },
-    getOne: async (req, res, next) => {
-        try {
-            // const borrowed = await BorrowedService.getOne();
-            return res.status(StatusCodes.OK).json({ data: 'borrowed' });
-        } catch (error) {
-            next(error);
-        }
-    },
     record: async (req, res, next) => {
         try {
             const { user_id, book_id } = req.body;
@@ -32,10 +16,10 @@ const BorrowedController = {
     },
     return: async (req, res, next) => {
         try {
-            const { user_id, book_id, fine_amount } = req.body;
+            const { user_id, book_id, borrow_fee } = req.body;
             if (!user_id) return res.status(StatusCodes.BAD_REQUEST).json({ message: BorrowedMessages.not_user_id });
             if (!book_id) return res.status(StatusCodes.BAD_REQUEST).json({ message: BorrowedMessages.not_book_id });
-            await BorrowedService.return(user_id, book_id, fine_amount);
+            await BorrowedService.return(user_id, book_id, borrow_fee);
             return res.status(StatusCodes.OK).json({ message: BorrowedMessages.returned });
         } catch (error) {
             next(error);

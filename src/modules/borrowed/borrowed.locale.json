@@ -34,6 +34,13 @@
     "tr": "Bu kitap zaten ödünç alınmış.",
     "fr": "Ce livre a déjà été emprunté."
   },
+  "not_borrowed_yet": {
+    "en": "This book has not been borrowed yet.",
+    "fa": "این کتاب هنوز قرض گرفته نشده است.",
+    "ar": "لم يتم استعارة هذا الكتاب بعد.",
+    "tr": "Bu kitap henüz ödünç alınmamış.",
+    "fr": "Ce livre n'a pas encore été emprunté."
+  },
   "already_returned": {
     "en": "This book has already been returned.",
     "fa": "این کتاب قبلاً بازگردانده شده است.",

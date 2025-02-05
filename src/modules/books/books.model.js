@@ -35,7 +35,7 @@ const Books = sequelize.define(
     },
     late_fee_per_day: {
       type: DataTypes.STRING(50),
-      defaultValue: null,
+      allowNull: false,
     },
     last_borrowed_date: {
       type: DataTypes.DATE,
@@ -47,7 +47,7 @@ const Books = sequelize.define(
     },
     status: {
       type: DataTypes.TINYINT,
-      defaultValue: 0,
+      defaultValue: 1,
     },
     quantity_available: {
       type: DataTypes.INTEGER,

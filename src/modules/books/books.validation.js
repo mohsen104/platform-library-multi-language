@@ -37,9 +37,7 @@ const zBooks = z.object({
         .min(0, BooksMessages.published_year_min),
 
     late_fee_per_day: z.string()
-        .max(50, BooksMessages.late_fee_max)
-        .nullable()
-        .optional(),
+        .max(50, BooksMessages.late_fee_max),
 
     quantity_available: z.number()
         .int(BooksMessages.quantity_available_int)
