@@ -34,7 +34,7 @@ const Users = sequelize.define("users", {
     borrow_limit: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 5
+        defaultValue: 0
     },
     is_blocked: {
         type: DataTypes.BOOLEAN,

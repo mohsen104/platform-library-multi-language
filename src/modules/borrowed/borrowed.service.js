@@ -7,21 +7,29 @@ import Users from "../users/users.model.js";
 
 const BorrowedService = {
     record: async (user_id, book_id) => {
-        const isExistsUser = await Users.findByPk(user_id);
-        if (!isExistsUser) {
-            // throw new
+        const user = await Users.findByPk(user_id);
+        if (!user) {
+            throw createHttpError(StatusCodes.NOT_FOUND, BorrowedMessages.not_found_user);
         }
         const book = await Books.findByPk(book_id);
         if (!book) {
-            // throw new
+            throw createHttpError(StatusCodes.NOT_FOUND, BorrowedMessages.not_found_book);
         }
         if (!book.quantity_available) {
-            // throw new
+            throw createHttpError(StatusCodes.BAD_REQUEST, BorrowedMessages.out_of_stock);
         }
         const isExistsRecord = await Borrowed.findOne({ where: { user_id, book_id } });
         if (isExistsRecord) {
-            // throw new
+            throw createHttpError(StatusCodes.CONFLICT, BorrowedMessages.already_borrowed);
         }
+        book.last_borrowed_date = Date.now();
+        book.times_borrowed += 1;
+        book.quantity_available -= 1;
+        await book.save();
+
+        user.borrow_limit += 1;
+        await user.save();
+
         await Borrowed.create({ user_id, book_id });
     },
     return: async (user_id, book_id, fine_amount) => {
